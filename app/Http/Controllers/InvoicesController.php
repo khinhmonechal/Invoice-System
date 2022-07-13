@@ -10,11 +10,12 @@ use App\Http\Controllers\Controller;
 use App\Invoices;
 use App\Items;
 use PDF;
+use Illuminate\Support\Facades\Validator;
 
 class InvoicesController extends Controller
 {
     public function index(){
-	    $invoices = DB::table('invoices')->paginate(5);
+	    $invoices = DB::table('invoices')->latest()->paginate(5);
         return view('invoiceList', ['invoices' => $invoices]);        
     }
 
@@ -23,6 +24,20 @@ class InvoicesController extends Controller
     }
 
     public function create(Request $request){
+        // dd('lll');
+        $validator = Validator::make($request->all(), [
+                'invoice_name' => 'required|max:255',
+                'item_name' => 'required',
+                'no_of_items' => 'required',
+                'price' => 'required',
+                'tax' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
     	
 		$row = $request->get('item_name');
 		$rowcount = count($row); 
@@ -49,20 +64,13 @@ class InvoicesController extends Controller
     	}
     	Items::insert($items);
 
-		return redirect('/list')->with('success','Created successfully!!!');
+		return redirect('/')->with('success','Created successfully!!!');
 	}
 
-	public function delete($id){
-    	// get id 
-    	// get invoice with id 
-    	// delete invoice 
-    	Invoices::where('id', $id)->delete();
-
-    	// get item with invoice id 
-    	// delete item 
-    	
+	public function delete($id){    	
+    	Invoices::where('id', $id)->delete();    	    	
         Items::where('inv_id', $id)->delete();
-        return redirect('/list')->with('success','Deleted successfully!!!');
+        return redirect('/')->with('success','Deleted successfully!!!');
     }
 
     
@@ -115,7 +123,7 @@ class InvoicesController extends Controller
     	}
     	Items::insert($items);
 
-		return redirect('/list')->with('success','Updated successfully!!!');		
+		return redirect('/')->with('success','Updated successfully!!!');		
     }
 
     public function pdfview($id){

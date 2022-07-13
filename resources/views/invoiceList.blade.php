@@ -47,7 +47,7 @@
         <td>{{$invoice->noOfItems}}</td>
         <td>{{$invoice->invoiceTotal}}</td>
         <td><a href="{{ URL::to('/pdfview/'.$invoice->id) }}" class="button is-success">PDF</a>
-        <a href="{{ URL::to('/delete/'.$invoice->id)}}" class="button is-success">Remove</a></td>
+        <a href="{{ URL::to('/delete/'.$invoice->id)}}" class="button is-success" onclick="return confirm('Are you sure you want to delete this item?');">Remove</a></td>
       </tr>
     @endforeach
     

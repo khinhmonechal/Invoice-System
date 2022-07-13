@@ -8,7 +8,16 @@
 <body>
 <br>
 
-<a class="btn btn-primary" href="{{ URL::to('/list') }}"> Go to List </a><br><br>
+
+<?php foreach ($errors->all() as $message) { ?>
+	<div style="background-color: pink;padding: 5px;">
+		<ul>
+			<li><?php echo $message; ?></li>
+		</ul>
+	</div>	
+<?php }  ?>
+
+<a class="btn btn-primary" href="{{ URL::to('/') }}"> Go to List </a><br><br>
 <h1><b>New Invoice</b></h1><br>
 <form method="post" action="<?= URL::to('create') ?>">
 {{csrf_field()}}
@@ -19,7 +28,7 @@
     </p>
 </div>
 	<br>
-	<table class="table is-striped">
+	<table class="table is-striped is-bordered">
 		<thead>
 			<tr>
 				<th>Item Name</th>

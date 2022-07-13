@@ -26,7 +26,7 @@ Route::get('/', function () {
 // });
 
 
-Route::get('/list', 'InvoicesController@index');
+Route::get('/', 'InvoicesController@index');
 
 Route::get('/add', 'InvoicesController@addInvoice');
 
@@ -40,11 +40,5 @@ Route::post('/search', 'InvoicesController@search');
 Route::get('/edit/{id}','InvoicesController@editInvoice');
 Route::post('/update/{id}','InvoicesController@update');
 
-// Route::get('/pdfview/{id}', 'InvoicesController@pdfview');
-
 Route::get('pdfview/{id}',array('as'=>'pdfview','uses'=>'InvoicesController@pdfview'));
-
-
-
-
 

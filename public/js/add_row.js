@@ -47,7 +47,8 @@
        function grandTotal(){
            var tax=$('.tax').val()-0;
            var sTotal=$('.sub_total').val()-0;
-           var gTotal=tax+sTotal;
+           // var gTotal=tax+sTotal;
+           var gTotal=sTotal-(sTotal*(tax/100));
            $('.grand_total').val(gTotal);
        } 
    });

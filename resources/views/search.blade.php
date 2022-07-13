@@ -2,7 +2,7 @@
 @section("content")
 <h1 align="center"><b><i>Invoice System</i></b></h1>
 
-<a class="btn btn-primary" href="{{ URL::to('/list') }}"> BACK </a><br><br>
+<a class="btn btn-primary" href="{{ URL::to('/') }}"> BACK </a><br><br>
 
 <h1><b><i>Search Results:</i></b></h1>
 <table class="table is-bordered">

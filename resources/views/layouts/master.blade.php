@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Laravel Example</title>
+	<title>Invoice</title>
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('../public/css/bulma.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('../public/css/invoice.css') }}">
 	

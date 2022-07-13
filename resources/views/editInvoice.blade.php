@@ -8,7 +8,7 @@
 <body>
 
 <br>
- <a class="btn btn-primary" href="{{ URL::to('/list') }}"> Go to List </a>    
+ <a class="btn btn-primary" href="{{ URL::to('/') }}"> Go to List </a>    
 <h1><b>Update Invoice</b></h1><br>
 @foreach($inv_datas as $inv_data)
 <form method="post" action="<?= URL::to('/update/'.$inv_data->id) ?>">
@@ -40,7 +40,7 @@
 				<td><input class="input no_of_items" type="text" name="no_of_items[]" id="no_of_items" value="{{$it_data->noOfItems}}"></td>
 		        <td><input class="input price" type="text" name="price[]" id="price[]" value="{{$it_data->price}}"></td>
 		        <td><input class="input total" name="total[]" id="total" value="{{$it_data->itemTotal}}"></td>
-		        <td><b id="delete">Delete</b></td>
+		        <td><b id="delete" class="button is-danger">Delete</b></td>
 			</tr>
 		@endforeach
 		</tbody>
